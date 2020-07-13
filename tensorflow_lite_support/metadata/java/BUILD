@@ -14,7 +14,7 @@ METADATA_SRCS = glob(
 )
 
 android_library(
-    name = "tensorflow-lite-support-metadata",
+    name = "tensorflowlite_support_metadata",
     srcs = METADATA_SRCS,
     manifest = "AndroidManifest.xml",
     deps = [
@@ -24,8 +24,13 @@ android_library(
     ],
 )
 
+alias(
+    name = "tensorflow-lite-support-metadata",
+    actual = ":tensorflowlite_support_metadata",
+)
+
 java_library(
-    name = "tensorflow-lite-support-metadata-lib",
+    name = "tensorflowlite_support_metadata_lib",
     srcs = METADATA_SRCS,
     javacopts = JAVACOPTS,
     resource_jars = [
@@ -37,4 +42,9 @@ java_library(
         "//tensorflow_lite_support/metadata:schema_fbs_java",
         "@org_checkerframework_qual",
     ],
+)
+
+alias(
+    name = "tensorflow-lite-support-metadata-lib",
+    actual = ":tensorflowlite_support_metadata_lib",
 )
